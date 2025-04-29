@@ -5,7 +5,7 @@ class_name VelocityComponent
 var velocity: Vector2 = Vector2.ZERO
 
 func accelerate_in_direction(direction: Vector2)->void:
-	velocity = direction.normalized()*speed
+	velocity = direction*speed
 
 func move(character_body:CharacterBody2D)->void:
 	character_body.velocity = velocity

@@ -16,5 +16,5 @@ func physics_update(_delta: float)-> void:
 	elif h < 0:
 		player.facing = "Left"
 	
-	player.velocity_component.accelerate_in_direction(input_vector)
+	player.velocity_component.accelerate_in_direction(input_vector.normalized())
 	player.velocity_component.move(player)
