@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c81oohdhbaf0y"]
+
+[ext_resource type="PackedScene" uid="uid://fmxv1aacj5nc" path="res://entities/zombie/zombie.tscn" id="1_y8ghy"]
+[ext_resource type="PackedScene" uid="uid://bhmx2bkb3mcap" path="res://entities/player/player.tscn" id="2_7wxdm"]
+
+[node name="Field" type="Node2D"]
+
+[node name="Zombie" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_y8ghy")]
+position = Vector2(343, 180)
+player = NodePath("../Player")
+
+[node name="Player" parent="." instance=ExtResource("2_7wxdm")]
+position = Vector2(51, 51)

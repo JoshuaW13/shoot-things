@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://fmxv1aacj5nc"]
+
+[ext_resource type="Texture2D" uid="uid://ltw1iovpfud" path="res://entities/zombie/assets/Zombie.png" id="1_ao7cg"]
+[ext_resource type="Script" uid="uid://da3y2qcqg177y" path="res://entities/zombie/zombie.gd" id="1_gvcbw"]
+
+[node name="Zombie" type="CharacterBody2D"]
+script = ExtResource("1_gvcbw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ao7cg")
