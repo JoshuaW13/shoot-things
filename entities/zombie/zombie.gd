@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
 @export var player: Player
-@export var speed: int = 40
+
+@onready var velocity_component: VelocityComponent = $VelocityComponent
 
 var facing: String = "Right":
 	get:
@@ -18,7 +19,7 @@ func check_facing()->void:
 		facing = "Left"
 
 func _physics_process(_delta: float) -> void:
-	var direction_to_player = position.direction_to(player.global_position)
-	velocity = direction_to_player*speed
+	velocity_component.accelerate_in_direction(position.direction_to(player.global_position))
+	velocity_component.move(self)
 	check_facing()
 	move_and_slide()
