@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://bhmx2bkb3mcap"]
+
+[ext_resource type="Script" uid="uid://dcth32k01p4d2" path="res://entities/player/player.gd" id="1_fkugw"]
+[ext_resource type="Texture2D" uid="uid://biqsf83tstoxi" path="res://entities/player/assets/Player.png" id="1_symyc"]
+[ext_resource type="PackedScene" uid="uid://4j5ax7d2m7u3" path="res://common/stateMachine/stateMachine.tscn" id="2_abrql"]
+[ext_resource type="Script" uid="uid://bdhlk3yt10dr0" path="res://entities/player/states/idleState.gd" id="3_bls4j"]
+[ext_resource type="Script" uid="uid://c6ln0iqeu78om" path="res://entities/player/states/moveState.gd" id="4_fkugw"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_fkugw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_symyc")
+
+[node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("2_abrql")]
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("3_bls4j")
+player = NodePath("../..")
+
+[node name="Move" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("4_fkugw")
+player = NodePath("../..")
