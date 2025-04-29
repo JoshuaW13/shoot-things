@@ -16,9 +16,9 @@ func physics_update(_delta: float)-> void:
 		transition.emit(self, "idle")
 		return 
 	
-	if h >=0:
+	if h >0:
 		player.facing = "Right"
-	else:
+	elif h < 0:
 		player.facing = "Left"
 	
 	player.velocity = calculate_velocity(input_vector)
