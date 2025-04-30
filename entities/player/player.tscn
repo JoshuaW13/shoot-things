@@ -1,11 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://bhmx2bkb3mcap"]
+[gd_scene load_steps=10 format=3 uid="uid://bhmx2bkb3mcap"]
 
 [ext_resource type="Script" uid="uid://dcth32k01p4d2" path="res://entities/player/player.gd" id="1_fkugw"]
 [ext_resource type="Texture2D" uid="uid://biqsf83tstoxi" path="res://entities/player/assets/Player.png" id="1_symyc"]
 [ext_resource type="PackedScene" uid="uid://4j5ax7d2m7u3" path="res://common/stateMachine/stateMachine.tscn" id="2_abrql"]
 [ext_resource type="Script" uid="uid://bdhlk3yt10dr0" path="res://entities/player/states/idleState.gd" id="3_bls4j"]
 [ext_resource type="Script" uid="uid://c6ln0iqeu78om" path="res://entities/player/states/moveState.gd" id="4_fkugw"]
-[ext_resource type="PackedScene" uid="uid://1pp8jw5odpso" path="res://common/movement/velocityComponent.tscn" id="6_8fjmc"]
+[ext_resource type="PackedScene" uid="uid://1pp8jw5odpso" path="res://common/components/velocity/velocityComponent.tscn" id="6_8fjmc"]
+[ext_resource type="PackedScene" uid="uid://1kj2iq4p63nj" path="res://common/components/hurtbox/hurtboxComponent.tscn" id="7_26q78"]
+[ext_resource type="PackedScene" uid="uid://bf8r0vvk3mqm3" path="res://common/components/health/healthComponent.tscn" id="8_bectd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_26q78"]
+radius = 22.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_fkugw")
@@ -25,3 +30,12 @@ script = ExtResource("4_fkugw")
 player = NodePath("../..")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("6_8fjmc")]
+
+[node name="HealthComponent" parent="." instance=ExtResource("8_bectd")]
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("7_26q78")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_26q78")

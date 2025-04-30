@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://ltw1iovpfud" path="res://entities/zombie/assets/Zombie.png" id="1_ao7cg"]
 [ext_resource type="Script" uid="uid://da3y2qcqg177y" path="res://entities/zombie/zombie.gd" id="1_gvcbw"]
-[ext_resource type="PackedScene" uid="uid://1pp8jw5odpso" path="res://common/movement/velocityComponent.tscn" id="3_uc8qh"]
+[ext_resource type="PackedScene" uid="uid://1pp8jw5odpso" path="res://common/components/velocity/velocityComponent.tscn" id="3_uc8qh"]
 
 [node name="Zombie" type="CharacterBody2D"]
 script = ExtResource("1_gvcbw")
