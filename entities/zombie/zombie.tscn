@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://fmxv1aacj5nc"]
+[gd_scene load_steps=6 format=3 uid="uid://fmxv1aacj5nc"]
 
 [ext_resource type="Texture2D" uid="uid://ltw1iovpfud" path="res://entities/zombie/assets/Zombie.png" id="1_ao7cg"]
 [ext_resource type="Script" uid="uid://da3y2qcqg177y" path="res://entities/zombie/zombie.gd" id="1_gvcbw"]
 [ext_resource type="PackedScene" uid="uid://1pp8jw5odpso" path="res://common/components/velocity/velocityComponent.tscn" id="3_uc8qh"]
+[ext_resource type="PackedScene" uid="uid://bflsqaeb3vl84" path="res://common/components/hitbox/HitboxComponent.tscn" id="4_tpeed"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y35hf"]
+radius = 16.0
+height = 40.0
 
 [node name="Zombie" type="CharacterBody2D"]
 script = ExtResource("1_gvcbw")
@@ -12,3 +17,13 @@ texture = ExtResource("1_ao7cg")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("3_uc8qh")]
 speed = 35
+
+[node name="HitboxComponent" parent="." instance=ExtResource("4_tpeed")]
+collision_layer = 8
+collision_mask = 0
+damage = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_y35hf")
+debug_color = Color(0.892887, 0.28426, 0.39749, 0.42)

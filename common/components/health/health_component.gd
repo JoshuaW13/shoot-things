@@ -3,9 +3,9 @@ class_name HealthComponent
 
 signal health_depleted
 
-@export var max_health = 10
+@export var max_health: float = 10
 
-var current_health: int:
+var current_health: float:
 	get:
 		return current_health
 	set(value):
@@ -21,3 +21,5 @@ func _ready() -> void:
 
 func deal_damage(damage)->void:
 	current_health = current_health - damage
+	if current_health <= 0:
+		health_depleted.emit()
