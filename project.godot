@@ -49,6 +49,7 @@ Down={
 2d_physics/layer_2="PlayerHurtbox"
 2d_physics/layer_3="EnemyHurtbox"
 2d_physics/layer_4="EnemyHitbox"
+2d_physics/layer_5="Entity"
 
 [rendering]
 
