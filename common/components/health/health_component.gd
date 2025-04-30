@@ -19,7 +19,7 @@ var current_health: float:
 func _ready() -> void:
 	current_health = max_health
 
-func deal_damage(damage)->void:
+func deal_damage(damage: float)->void:
 	current_health = current_health - damage
 	if current_health <= 0:
 		health_depleted.emit()

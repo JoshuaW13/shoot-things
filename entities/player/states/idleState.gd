@@ -7,13 +7,13 @@ func process_input(_event: InputEvent) -> void:
 		transition.emit(self, "Move")
 
 func physics_update(_delta: float) -> void:
-	var h = 0
+	var h: int = 0
 	if Input.is_action_pressed("Right"):
 		h += 1
 	if Input.is_action_pressed("Left"):
 		h -= 1
 
-	var v = 0
+	var v: int = 0
 	if Input.is_action_pressed("Down"):
 		v += 1
 	if Input.is_action_pressed("Up"):

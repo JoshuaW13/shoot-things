@@ -30,6 +30,7 @@ script = ExtResource("4_fkugw")
 player = NodePath("../..")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("6_8fjmc")]
+speed = 250.0
 
 [node name="HealthComponent" parent="." instance=ExtResource("8_bectd")]
 

@@ -19,7 +19,7 @@ func check_facing()->void:
 		facing = "Left"
 
 func _physics_process(_delta: float) -> void:
-	var direction_to_player = position.direction_to(player.global_position)
+	var direction_to_player: Vector2 = position.direction_to(player.global_position)
 	velocity_component.accelerate_in_direction(direction_to_player.normalized())
 	velocity_component.move(self)
 	check_facing()

@@ -27,7 +27,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if  current_state:
 		current_state.process_input(event)
 
-func on_state_transition(state, new_state_name: String):
+func on_state_transition(state:State, new_state_name: String)->void:
 	if state != current_state:
 		return
 	

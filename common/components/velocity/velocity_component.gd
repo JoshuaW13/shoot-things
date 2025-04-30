@@ -1,7 +1,7 @@
 extends Node2D
 class_name VelocityComponent
 
-@export var speed = 250
+@export var speed: float
 var velocity: Vector2 = Vector2.ZERO
 
 func accelerate_in_direction(direction: Vector2)->void:

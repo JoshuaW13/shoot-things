@@ -3,7 +3,7 @@ class_name HurtboxComponent
 
 @export var health_component: HealthComponent
 
-func apply_damage(damage: float):
+func apply_damage(damage: float)->void:
 	if health_component:
 		health_component.deal_damage(damage)
 

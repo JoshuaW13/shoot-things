@@ -16,12 +16,11 @@ script = ExtResource("1_gvcbw")
 texture = ExtResource("1_ao7cg")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("3_uc8qh")]
-speed = 35
+speed = 30.0
 
 [node name="HitboxComponent" parent="." instance=ExtResource("4_tpeed")]
 collision_layer = 8
 collision_mask = 0
-damage = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(0, 2)

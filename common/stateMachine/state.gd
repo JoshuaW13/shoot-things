@@ -3,10 +3,10 @@ class_name State
 
 signal transition
 
-func enter():
+func enter()->void:
 	pass
 
-func exit():
+func exit()->void:
 	pass
 
 func update(_delta: float)-> void:
