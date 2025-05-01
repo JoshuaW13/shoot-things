@@ -10,3 +10,4 @@ class_name Player
 func _ready() -> void:
 	player_direction_controller.patient = flip_pivot
 	weapon_direction_controller.patient = weapon
+	weapon_direction_controller.flip_on_mouse = player_direction_controller
