@@ -48,5 +48,4 @@ shape = SubResource("CircleShape2D_26q78")
 [node name="Pistol" parent="." instance=ExtResource("9_bectd")]
 position = Vector2(24, 0)
 
-[node name="FlipOnMouseComponent" parent="." node_paths=PackedStringArray("patient") instance=ExtResource("10_wvtmh")]
-patient = NodePath("..")
+[node name="FlipOnMouseComponent" parent="." instance=ExtResource("10_wvtmh")]
