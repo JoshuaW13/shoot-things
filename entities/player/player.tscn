@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bhmx2bkb3mcap"]
+[gd_scene load_steps=12 format=3 uid="uid://bhmx2bkb3mcap"]
 
 [ext_resource type="Script" uid="uid://dcth32k01p4d2" path="res://entities/player/player.gd" id="1_fkugw"]
 [ext_resource type="Texture2D" uid="uid://biqsf83tstoxi" path="res://entities/player/assets/Player.png" id="1_symyc"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://1kj2iq4p63nj" path="res://common/components/hurtbox/hurtboxComponent.tscn" id="7_26q78"]
 [ext_resource type="PackedScene" uid="uid://bf8r0vvk3mqm3" path="res://common/components/health/healthComponent.tscn" id="8_bectd"]
 [ext_resource type="PackedScene" uid="uid://c4c1lf1xgmou7" path="res://entities/items/guns/pistol/pistol.tscn" id="9_bectd"]
+[ext_resource type="PackedScene" uid="uid://coos8sjb0fwpu" path="res://common/components/flipOnMouse/flipOnMouseComponent.tscn" id="10_wvtmh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_26q78"]
 radius = 22.0
@@ -46,3 +47,6 @@ shape = SubResource("CircleShape2D_26q78")
 
 [node name="Pistol" parent="." instance=ExtResource("9_bectd")]
 position = Vector2(24, 0)
+
+[node name="FlipOnMouseComponent" parent="." node_paths=PackedStringArray("patient") instance=ExtResource("10_wvtmh")]
+patient = NodePath("..")
