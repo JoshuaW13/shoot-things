@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bhmx2bkb3mcap"]
+[gd_scene load_steps=13 format=3 uid="uid://bhmx2bkb3mcap"]
 
 [ext_resource type="Script" uid="uid://dcth32k01p4d2" path="res://entities/player/player.gd" id="1_fkugw"]
 [ext_resource type="Texture2D" uid="uid://biqsf83tstoxi" path="res://entities/player/assets/Player.png" id="1_symyc"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bf8r0vvk3mqm3" path="res://common/components/health/healthComponent.tscn" id="8_bectd"]
 [ext_resource type="PackedScene" uid="uid://c4c1lf1xgmou7" path="res://entities/items/guns/pistol/pistol.tscn" id="9_bectd"]
 [ext_resource type="PackedScene" uid="uid://coos8sjb0fwpu" path="res://common/components/flipOnMouse/flipOnMouseComponent.tscn" id="10_wvtmh"]
+[ext_resource type="PackedScene" uid="uid://c05ghbirgw0rv" path="res://common/components/rotateOnMouse/rotateOnMouseComponent.tscn" id="11_7thud"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_26q78"]
 radius = 22.0
@@ -17,8 +18,23 @@ radius = 22.0
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_fkugw")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Pivot" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Pivot"]
 texture = ExtResource("1_symyc")
+
+[node name="Pistol" parent="Pivot" instance=ExtResource("9_bectd")]
+unique_name_in_owner = true
+position = Vector2(24, 0)
+
+[node name="HurtboxComponent" parent="Pivot" node_paths=PackedStringArray("health_component") instance=ExtResource("7_26q78")]
+collision_layer = 2
+collision_mask = 8
+health_component = NodePath("../../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/HurtboxComponent"]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_26q78")
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("2_abrql")]
 initial_state = NodePath("Idle")
@@ -36,16 +52,7 @@ speed = 250.0
 
 [node name="HealthComponent" parent="." instance=ExtResource("8_bectd")]
 
-[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("7_26q78")]
-collision_layer = 2
-collision_mask = 8
-health_component = NodePath("../HealthComponent")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
-position = Vector2(0, 2)
-shape = SubResource("CircleShape2D_26q78")
-
-[node name="Pistol" parent="." instance=ExtResource("9_bectd")]
-position = Vector2(24, 0)
-
 [node name="FlipOnMouseComponent" parent="." instance=ExtResource("10_wvtmh")]
+
+[node name="RotateOnMouseComponent" parent="." instance=ExtResource("11_7thud")]
+unique_name_in_owner = true

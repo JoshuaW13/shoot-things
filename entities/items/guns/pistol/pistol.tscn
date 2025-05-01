@@ -5,4 +5,5 @@
 [node name="Pistol" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(6, -1)
 texture = ExtResource("1_wfjhr")

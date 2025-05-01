@@ -9,9 +9,6 @@
 position = Vector2(745, 417)
 player = NodePath("../Player")
 
-[node name="Player" parent="." instance=ExtResource("2_7wxdm")]
-position = Vector2(51, 51)
-
 [node name="Zombie2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_y8ghy")]
 position = Vector2(817, 227)
 player = NodePath("../Player")
@@ -47,3 +44,6 @@ player = NodePath("../Player")
 [node name="Zombie10" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_y8ghy")]
 position = Vector2(201, 434)
 player = NodePath("../Player")
+
+[node name="Player" parent="." instance=ExtResource("2_7wxdm")]
+position = Vector2(51, 51)
