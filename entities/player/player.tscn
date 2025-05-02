@@ -36,14 +36,14 @@ health_component = NodePath("../../HealthComponent")
 position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_26q78")
 
-[node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("2_abrql")]
+[node name="MovementStateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("2_abrql")]
 initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+[node name="Idle" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("player")]
 script = ExtResource("3_bls4j")
 player = NodePath("../..")
 
-[node name="Move" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+[node name="Move" type="Node" parent="MovementStateMachine" node_paths=PackedStringArray("player")]
 script = ExtResource("4_fkugw")
 player = NodePath("../..")
 
