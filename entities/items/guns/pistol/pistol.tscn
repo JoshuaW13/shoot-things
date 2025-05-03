@@ -12,3 +12,5 @@ texture = ExtResource("1_wfjhr")
 
 [node name="muzzle" type="Marker2D" parent="."]
 position = Vector2(20, -2)
+
+[node name="Timer" type="Timer" parent="."]
