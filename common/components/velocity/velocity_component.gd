@@ -12,3 +12,6 @@ func move(body:CharacterBody2D)->Vector2:
 	body.velocity = velocity
 	body.move_and_slide()
 	return body.global_position - prev_position
+
+func stop(body: CharacterBody2D)->void:
+	body.velocity = Vector2.ZERO

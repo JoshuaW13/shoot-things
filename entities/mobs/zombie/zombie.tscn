@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://fmxv1aacj5nc"]
+[gd_scene load_steps=13 format=3 uid="uid://fmxv1aacj5nc"]
 
 [ext_resource type="Texture2D" uid="uid://ltw1iovpfud" path="res://entities/mobs/zombie/assets/Zombie.png" id="1_ao7cg"]
 [ext_resource type="Script" uid="uid://da3y2qcqg177y" path="res://entities/mobs/zombie/zombie.gd" id="1_gvcbw"]
@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://1kj2iq4p63nj" path="res://common/components/hurtbox/hurtboxComponent.tscn" id="5_acofq"]
 [ext_resource type="PackedScene" uid="uid://bf8r0vvk3mqm3" path="res://common/components/health/healthComponent.tscn" id="6_gm0e6"]
 [ext_resource type="PackedScene" uid="uid://bpku656ioj6cj" path="res://common/components/flipOnVelocity/FlipOnVelocity.tscn" id="7_gto4i"]
+[ext_resource type="PackedScene" uid="uid://4j5ax7d2m7u3" path="res://common/stateMachine/stateMachine.tscn" id="8_rvj4u"]
+[ext_resource type="Script" uid="uid://mjyogjm68rxi" path="res://entities/mobs/zombie/states/huntState.gd" id="9_dx8eb"]
+[ext_resource type="Script" uid="uid://cn2sa65ousa5m" path="res://entities/mobs/zombie/states/stunnedState.gd" id="10_dx8eb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gm0e6"]
 radius = 18.0
@@ -56,4 +59,18 @@ max_health = 3.0
 
 [node name="FlipOnVelocity" parent="." instance=ExtResource("7_gto4i")]
 
+[node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("8_rvj4u")]
+initial_state = NodePath("Hunt")
+
+[node name="Hunt" type="Node" parent="StateMachine" node_paths=PackedStringArray("zombie")]
+script = ExtResource("9_dx8eb")
+zombie = NodePath("../..")
+
+[node name="Stunned" type="Node" parent="StateMachine"]
+script = ExtResource("10_dx8eb")
+
+[node name="StunnedTimer" type="Timer" parent="StateMachine/Stunned"]
+
+[connection signal="current_health_changed" from="HealthComponent" to="StateMachine/Hunt" method="_on_health_component_current_health_changed"]
 [connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
+[connection signal="timeout" from="StateMachine/Stunned/StunnedTimer" to="StateMachine/Stunned" method="_on_stunned_timer_timeout"]

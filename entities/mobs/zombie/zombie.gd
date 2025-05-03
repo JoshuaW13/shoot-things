@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Zombie
 
 @export var player: Player
 
@@ -16,11 +17,6 @@ func _ready() -> void:
 	hurtbox_component.health_component = health_component
 	facing_controller.patient = flip_pivot 
 	facing_controller.velocity_component = velocity_component
-
-func _physics_process(_delta: float) -> void:
-	var direction_to_player: Vector2 = position.direction_to(player.global_position)
-	velocity_component.accelerate_in_direction(direction_to_player.normalized())
-	velocity_component.move(self)
 
 func _on_health_component_health_depleted() -> void:
 	self.queue_free()
