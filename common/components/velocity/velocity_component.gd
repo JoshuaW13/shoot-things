@@ -7,6 +7,8 @@ var velocity: Vector2 = Vector2.ZERO
 func accelerate_in_direction(direction: Vector2)->void:
 	velocity = direction*speed
 
-func move(character_body:CharacterBody2D)->void:
-	character_body.velocity = velocity
-	character_body.move_and_slide()
+func move(body:CharacterBody2D)->Vector2:
+	var prev_position: Vector2 = body.global_position
+	body.velocity = velocity
+	body.move_and_slide()
+	return body.global_position - prev_position
