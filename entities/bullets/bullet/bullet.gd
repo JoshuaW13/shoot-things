@@ -2,10 +2,14 @@ extends CharacterBody2D
 class_name Bullet
 
 @onready var velocity_component: VelocityComponent = $VelocityComponent
+@onready var hitbox_component: HitboxComponent = $HitboxComponent
 
 var bullet_range: float = 0
 var fire_direction: Vector2 = Vector2.ZERO
 var distance_traveled: float = 0
+
+func _ready() -> void:
+	hitbox_component.damage = 1
 
 func _physics_process(_delta: float) -> void:
 	if fire_direction != Vector2.ZERO and bullet_range !=0:

@@ -1,13 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbwsi0k84vtto"]
+[gd_scene load_steps=6 format=3 uid="uid://cbwsi0k84vtto"]
 
 [ext_resource type="Script" uid="uid://bl02cy2t8g4d4" path="res://entities/bullets/bullet/bullet.gd" id="1_f1bop"]
-[ext_resource type="Texture2D" uid="uid://cltauem13uwg1" path="res://icon.svg" id="1_hd8qp"]
+[ext_resource type="Texture2D" uid="uid://dke00t7yq3e1m" path="res://entities/bullets/bullet/assets/Bullet.png" id="2_l60rc"]
 [ext_resource type="PackedScene" uid="uid://1pp8jw5odpso" path="res://common/components/velocity/velocityComponent.tscn" id="3_l60rc"]
+[ext_resource type="PackedScene" uid="uid://bflsqaeb3vl84" path="res://common/components/hitbox/HitboxComponent.tscn" id="4_ec8w2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o8ly3"]
+size = Vector2(6, 6)
 
 [node name="Bullet" type="CharacterBody2D"]
 script = ExtResource("1_f1bop")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_hd8qp")
+position = Vector2(-2, 2)
+texture = ExtResource("2_l60rc")
 
 [node name="VelocityComponent" parent="." instance=ExtResource("3_l60rc")]
+
+[node name="HitboxComponent" parent="." instance=ExtResource("4_ec8w2")]
+collision_layer = 32
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("RectangleShape2D_o8ly3")

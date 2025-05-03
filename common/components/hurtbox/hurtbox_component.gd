@@ -3,6 +3,15 @@ class_name HurtboxComponent
 
 @export var health_component: HealthComponent
 
+func _get_configuration_warnings() -> PackedStringArray:
+	var warnings: PackedStringArray = PackedStringArray()
+
+	if not health_component:
+		warnings.append("Health component not set.")
+
+	return warnings
+
+
 func apply_damage(damage: float)->void:
 	if health_component:
 		health_component.deal_damage(damage)
