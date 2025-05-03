@@ -23,3 +23,6 @@ func setup(muzzle_speed: float, direction:Vector2, gun_range: float)->void:
 	velocity_component.speed = muzzle_speed
 	bullet_range = gun_range
 	fire_direction = direction
+
+func _on_hitbox_component_hurtbox_hit() -> void:
+	self.queue_free()
