@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://fmxv1aacj5nc"]
+[gd_scene load_steps=10 format=3 uid="uid://fmxv1aacj5nc"]
 
 [ext_resource type="Texture2D" uid="uid://ltw1iovpfud" path="res://entities/mobs/zombie/assets/Zombie.png" id="1_ao7cg"]
 [ext_resource type="Script" uid="uid://da3y2qcqg177y" path="res://entities/mobs/zombie/zombie.gd" id="1_gvcbw"]
@@ -6,45 +6,54 @@
 [ext_resource type="PackedScene" uid="uid://bflsqaeb3vl84" path="res://common/components/hitbox/HitboxComponent.tscn" id="4_tpeed"]
 [ext_resource type="PackedScene" uid="uid://1kj2iq4p63nj" path="res://common/components/hurtbox/hurtboxComponent.tscn" id="5_acofq"]
 [ext_resource type="PackedScene" uid="uid://bf8r0vvk3mqm3" path="res://common/components/health/healthComponent.tscn" id="6_gm0e6"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y35hf"]
-radius = 16.0
-height = 40.0
+[ext_resource type="PackedScene" uid="uid://bpku656ioj6cj" path="res://common/components/flipOnVelocity/FlipOnVelocity.tscn" id="7_gto4i"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gm0e6"]
 radius = 18.0
 height = 48.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y35hf"]
+radius = 16.0
+height = 40.0
 
 [node name="Zombie" type="CharacterBody2D"]
 collision_layer = 16
 collision_mask = 17
 script = ExtResource("1_gvcbw")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Pivot" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Pivot"]
+unique_name_in_owner = true
 texture = ExtResource("1_ao7cg")
 
-[node name="VelocityComponent" parent="." instance=ExtResource("3_uc8qh")]
-speed = 30.0
+[node name="HurtboxComponent" parent="Pivot" node_paths=PackedStringArray("health_component") instance=ExtResource("5_acofq")]
+unique_name_in_owner = true
+collision_layer = 4
+collision_mask = 32
+health_component = NodePath("../../HealthComponent")
 
-[node name="HitboxComponent" parent="." instance=ExtResource("4_tpeed")]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/HurtboxComponent"]
+position = Vector2(2, 2)
+shape = SubResource("CapsuleShape2D_gm0e6")
+
+[node name="HitboxComponent" parent="Pivot" instance=ExtResource("4_tpeed")]
+unique_name_in_owner = true
 collision_layer = 8
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/HitboxComponent"]
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_y35hf")
 debug_color = Color(0.892887, 0.28426, 0.39749, 0.42)
 
-[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_acofq")]
-collision_layer = 4
-collision_mask = 32
-health_component = NodePath("../HealthComponent")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
-position = Vector2(2, 2)
-shape = SubResource("CapsuleShape2D_gm0e6")
+[node name="VelocityComponent" parent="." instance=ExtResource("3_uc8qh")]
+speed = 30.0
 
 [node name="HealthComponent" parent="." instance=ExtResource("6_gm0e6")]
 max_health = 3.0
+
+[node name="FlipOnVelocity" parent="." instance=ExtResource("7_gto4i")]
 
 [connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]

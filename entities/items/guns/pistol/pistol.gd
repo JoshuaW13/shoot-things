@@ -3,8 +3,8 @@ extends Gun
 @onready var muzzle: Marker2D = $muzzle
 @onready var cooldown_timer: Timer = $Timer
 
-@export var muzzle_speed: float = 325
-@export var gun_range: float = 1000
+@export var muzzle_speed: float = 1100
+@export var gun_range: float = 750
 @export var gun_cooldown: float = 0.5
 
 var bullet_resource: Resource = preload("res://entities/bullets/bullet/Bullet.tscn")
