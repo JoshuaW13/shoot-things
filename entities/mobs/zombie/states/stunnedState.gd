@@ -1,6 +1,6 @@
 extends State
 
-@onready var stun_timer = $StunnedTimer
+@onready var stun_timer: Timer = $StunnedTimer
 
 func enter()->void:
 	stun_timer.wait_time = 0.25

@@ -10,7 +10,7 @@ var current_health: float:
 	get:
 		return current_health
 	set(value):
-		var prev_health = current_health
+		var prev_health: float = current_health
 		if value>max_health:
 			current_health = max_health
 		elif value<0:
