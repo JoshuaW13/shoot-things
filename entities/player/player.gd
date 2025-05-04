@@ -13,8 +13,8 @@ func _ready() -> void:
 	weapon_direction_controller.flip_on_mouse = player_direction_controller
 
 func _physics_process(_delta: float) -> void:
-	if Input.is_action_just_pressed("PrimaryAction"):
+	if Input.is_action_pressed("PrimaryAction"):
 		weapon.shoot()
 
 func _on_health_component_health_depleted() -> void:
-	get_tree().change_scene_to_file("res://levels/titleScreen/titleScreen.tscn")
+	get_tree().call_deferred("change_scene_to_file", "res://levels/titleScreen/titleScreen.tscn")

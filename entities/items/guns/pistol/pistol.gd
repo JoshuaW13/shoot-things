@@ -5,7 +5,7 @@ extends Gun
 
 @export var muzzle_speed: float = 1100
 @export var gun_range: float = 750
-@export var gun_cooldown: float = 0.5
+@export var gun_cooldown: float = 0.75
 
 var bullet_resource: Resource = preload("res://entities/bullets/bullet/Bullet.tscn")
 
