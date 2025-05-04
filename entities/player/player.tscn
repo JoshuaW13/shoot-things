@@ -56,3 +56,5 @@ speed = 250.0
 
 [node name="RotateOnMouseComponent" parent="." instance=ExtResource("11_7thud")]
 unique_name_in_owner = true
+
+[connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]

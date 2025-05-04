@@ -15,3 +15,6 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("PrimaryAction"):
 		weapon.shoot()
+
+func _on_health_component_health_depleted() -> void:
+	get_tree().change_scene_to_file("res://levels/titleScreen/titleScreen.tscn")
