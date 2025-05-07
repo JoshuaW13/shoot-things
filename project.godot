@@ -15,6 +15,10 @@ run/main_scene="uid://bj7hryelfc5l"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="uid://dwgjtbsmpgd5t"
 
+[autoload]
+
+SignalBus="*res://common/singletons/signalbus/signal_bus.gd"
+
 [debug]
 
 gdscript/warnings/unused_signal=0
