@@ -1,3 +1,3 @@
 extends Node
 
-signal level_limits(left_limit, right_limit, top_limit, bottom_limit)
+signal level_limits(left_limit:int, right_limit: int, top_limit: int, bottom_limit: int)

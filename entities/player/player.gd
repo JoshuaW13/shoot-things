@@ -21,7 +21,7 @@ func _physics_process(_delta: float) -> void:
 func _on_health_component_health_depleted() -> void:
 	get_tree().call_deferred("change_scene_to_file", "res://levels/titleScreen/titleScreen.tscn")
 	
-func on_level_limits(left_limit, right_limit, top_limit, bottom_limit)->void:
+func on_level_limits(left_limit:int, right_limit:int, top_limit:int, bottom_limit:int)->void:
 	camera.set_limit(SIDE_LEFT,left_limit)
 	camera.set_limit(SIDE_RIGHT,right_limit)
 	camera.set_limit(SIDE_TOP,top_limit)
