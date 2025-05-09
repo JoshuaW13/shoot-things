@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="GunItem" load_steps=4 format=3 uid="uid://kadr2kqokq0u"]
+
+[ext_resource type="Texture2D" uid="uid://dwgjtbsmpgd5t" path="res://entities/items/guns/pistol/assets/Pistol.png" id="1_1uw01"]
+[ext_resource type="Script" uid="uid://buir1euq4jnm8" path="res://entities/player/inventory/GunItem.gd" id="1_l6pa5"]
+[ext_resource type="PackedScene" uid="uid://c4c1lf1xgmou7" path="res://entities/items/guns/pistol/pistol.tscn" id="2_yf5jv"]
+
+[resource]
+script = ExtResource("1_l6pa5")
+ammo = 11
+name = "pistol"
+type = 0
+scene_data = ExtResource("2_yf5jv")
+icon = ExtResource("1_1uw01")
+metadata/_custom_type_script = "uid://buir1euq4jnm8"
