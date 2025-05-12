@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=3 uid="uid://yttrtgh1mv8"]
+
+[ext_resource type="PackedScene" uid="uid://bxtv2a0x0rop6" path="res://entities/player/inventory/inventory_item_container.tscn" id="1_i05j4"]
+
+[node name="InventoryBar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.938
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 0.175964
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="InventoryItemContainer" parent="HBoxContainer" instance=ExtResource("1_i05j4")]
+layout_mode = 2
+
+[node name="InventoryItemContainer3" parent="HBoxContainer" instance=ExtResource("1_i05j4")]
+layout_mode = 2
+
+[node name="InventoryItemContainer2" parent="HBoxContainer" instance=ExtResource("1_i05j4")]
+layout_mode = 2
+
+[node name="InventoryItemContainer4" parent="HBoxContainer" instance=ExtResource("1_i05j4")]
+layout_mode = 2
+
+[node name="InventoryItemContainer5" parent="HBoxContainer" instance=ExtResource("1_i05j4")]
+layout_mode = 2
+
+[node name="InventoryItemContainer6" parent="HBoxContainer" instance=ExtResource("1_i05j4")]
+layout_mode = 2
+
+[node name="InventoryItemContainer7" parent="HBoxContainer" instance=ExtResource("1_i05j4")]
+layout_mode = 2
+
+[node name="InventoryItemContainer8" parent="HBoxContainer" instance=ExtResource("1_i05j4")]
+layout_mode = 2
+
+[node name="InventoryItemContainer9" parent="HBoxContainer" instance=ExtResource("1_i05j4")]
+layout_mode = 2
+
+[node name="InventoryItemContainer10" parent="HBoxContainer" instance=ExtResource("1_i05j4")]
+layout_mode = 2
