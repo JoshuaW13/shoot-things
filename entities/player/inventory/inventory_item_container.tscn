@@ -1,13 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://bxtv2a0x0rop6"]
 
 [ext_resource type="Texture2D" uid="uid://6n4s2akytfs1" path="res://entities/player/inventory/assets/itemSlot.png" id="1_cqaok"]
-[ext_resource type="Texture2D" uid="uid://dwgjtbsmpgd5t" path="res://entities/items/guns/pistol/assets/Pistol.png" id="1_yop12"]
+[ext_resource type="Script" uid="uid://ml22dbe3767j" path="res://entities/player/inventory/inventory_item_container.gd" id="1_qeqe1"]
 
 [node name="InventoryItemContainer" type="MarginContainer"]
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 2
+script = ExtResource("1_qeqe1")
 
 [node name="TextureButton" type="TextureButton" parent="."]
 layout_mode = 2
@@ -28,5 +29,5 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="TextureButton/CenterContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-texture = ExtResource("1_yop12")

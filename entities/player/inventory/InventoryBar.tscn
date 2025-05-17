@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://yttrtgh1mv8"]
+[gd_scene load_steps=3 format=3 uid="uid://yttrtgh1mv8"]
 
 [ext_resource type="PackedScene" uid="uid://bxtv2a0x0rop6" path="res://entities/player/inventory/inventory_item_container.tscn" id="1_i05j4"]
+[ext_resource type="Script" uid="uid://o4jtq2kuu7cr" path="res://entities/player/inventory/inventory_bar.gd" id="1_t2lod"]
 
 [node name="InventoryBar" type="Control"]
 layout_mode = 3
@@ -9,15 +10,20 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_t2lod")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.938
-anchor_right = 1.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_top = 0.175964
-grow_horizontal = 0
+offset_left = -438.0
+offset_top = -66.0
+offset_right = 438.0
+grow_horizontal = 2
 grow_vertical = 0
 
 [node name="InventoryItemContainer" parent="HBoxContainer" instance=ExtResource("1_i05j4")]
