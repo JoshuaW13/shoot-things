@@ -29,3 +29,12 @@ func _on_inventory_item_added(item: InventoryItem) -> void:
 		if !container.is_set:
 			container.set_item(item)
 			return
+
+func _process(_delta: float) -> void:
+	for i in 10:
+		if Input.is_action_just_pressed("slot_%d" % i):
+			inventory.selected_item_index = i
+
+
+func _on_inventory_selected_item_changed(item: InventoryItem, index: int) -> void:
+	pass

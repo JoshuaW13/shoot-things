@@ -7,12 +7,15 @@ class_name Player
 @onready var weapon: Gun = %Pistol
 @onready var flip_pivot: Node2D = $Pivot
 @onready var camera: Camera2D = $Camera2D
+@onready var inventory: Inventory = %Inventory
+@onready var inventory_bar_ui: InventoryBar = %InventoryBar
 
 func _ready() -> void:
 	player_direction_controller.patient = flip_pivot
 	weapon_direction_controller.patient = weapon
 	weapon_direction_controller.flip_on_mouse = player_direction_controller
 	SignalBus.level_limits.connect(on_level_limits)
+	inventory_bar_ui.inventory = inventory
 
 func _physics_process(_delta: float) -> void:
 	if Input.is_action_pressed("PrimaryAction"):

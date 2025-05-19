@@ -75,8 +75,10 @@ unique_name_in_owner = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="InventoryBar" parent="CanvasLayer" instance=ExtResource("13_j3ovn")]
+[node name="InventoryBar" parent="CanvasLayer" node_paths=PackedStringArray("inventory") instance=ExtResource("13_j3ovn")]
 unique_name_in_owner = true
+inventory = NodePath("../../Inventory")
 
 [connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
 [connection signal="item_added" from="Inventory" to="CanvasLayer/InventoryBar" method="_on_inventory_item_added"]
+[connection signal="selected_item_changed" from="Inventory" to="CanvasLayer/InventoryBar" method="_on_inventory_selected_item_changed"]
