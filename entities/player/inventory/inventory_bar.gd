@@ -19,6 +19,8 @@ func initialize_ui_containers()-> void:
 	for child: Variant in hbox_children:
 		if child is InventoryItemContainer:
 			inventory_item_containers.push_back(child)
+			child.slot_index = inventory_item_containers.size()-1
+			child.got_focus.connect(on_inventory_container_got_focus)
 
 func _ready() -> void:
 	initialize_ui_containers()
@@ -35,6 +37,9 @@ func _process(_delta: float) -> void:
 		if Input.is_action_just_pressed("slot_%d" % i):
 			inventory.selected_item_index = i
 
+func _on_inventory_selected_item_changed(_item: InventoryItem, index: int) -> void:
+	var inventory_slot: InventoryItemContainer = inventory_item_containers[index]
+	inventory_slot.get_focus()
 
-func _on_inventory_selected_item_changed(item: InventoryItem, index: int) -> void:
-	pass
+func on_inventory_container_got_focus(index: int)->void:
+	inventory.selected_item_index = index

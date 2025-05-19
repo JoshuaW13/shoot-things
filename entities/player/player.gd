@@ -10,6 +10,8 @@ class_name Player
 @onready var inventory: Inventory = %Inventory
 @onready var inventory_bar_ui: InventoryBar = %InventoryBar
 
+var primary_action_held: bool = false
+
 func _ready() -> void:
 	player_direction_controller.patient = flip_pivot
 	weapon_direction_controller.patient = weapon
@@ -17,9 +19,15 @@ func _ready() -> void:
 	SignalBus.level_limits.connect(on_level_limits)
 	inventory_bar_ui.inventory = inventory
 
-func _physics_process(_delta: float) -> void:
-	if Input.is_action_pressed("PrimaryAction"):
+func _process(delta: float) -> void:
+	if primary_action_held:
 		weapon.shoot()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("PrimaryAction"):
+		primary_action_held = true
+	elif event.is_action_released("PrimaryAction"):
+		primary_action_held = false
 
 func _on_health_component_health_depleted() -> void:
 	get_tree().call_deferred("change_scene_to_file", "res://levels/titleScreen/titleScreen.tscn")

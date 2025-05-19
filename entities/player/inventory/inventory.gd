@@ -11,8 +11,8 @@ var items: Array[InventoryItem] = []
 var selected_item_index: int = 0:
 	set(inventory_slot):
 		if inventory_slot >=MIN_SLOT and inventory_slot <= MAX_SLOT:
-			selected_item = items[inventory_slot]
 			selected_item_index = inventory_slot
+			selected_item = items[inventory_slot]
 		else:
 			print("bad inventory swap!");
 

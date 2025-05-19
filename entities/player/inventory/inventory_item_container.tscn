@@ -33,3 +33,5 @@ grow_vertical = 2
 [node name="TextureRect" type="TextureRect" parent="TextureButton/CenterContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+
+[connection signal="focus_entered" from="TextureButton" to="." method="_on_texture_button_focus_entered"]
