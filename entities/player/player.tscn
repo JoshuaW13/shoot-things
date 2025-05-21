@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bhmx2bkb3mcap"]
+[gd_scene load_steps=15 format=3 uid="uid://bhmx2bkb3mcap"]
 
 [ext_resource type="Script" uid="uid://dcth32k01p4d2" path="res://entities/player/player.gd" id="1_fkugw"]
 [ext_resource type="Texture2D" uid="uid://biqsf83tstoxi" path="res://entities/player/assets/Player.png" id="1_symyc"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://1pp8jw5odpso" path="res://common/components/velocity/velocityComponent.tscn" id="6_8fjmc"]
 [ext_resource type="PackedScene" uid="uid://1kj2iq4p63nj" path="res://common/components/hurtbox/hurtboxComponent.tscn" id="7_26q78"]
 [ext_resource type="PackedScene" uid="uid://bf8r0vvk3mqm3" path="res://common/components/health/healthComponent.tscn" id="8_bectd"]
-[ext_resource type="PackedScene" uid="uid://c4c1lf1xgmou7" path="res://entities/items/guns/pistol/pistol.tscn" id="9_bectd"]
 [ext_resource type="PackedScene" uid="uid://coos8sjb0fwpu" path="res://common/components/flipOnMouse/flipOnMouseComponent.tscn" id="10_wvtmh"]
 [ext_resource type="PackedScene" uid="uid://c05ghbirgw0rv" path="res://common/components/rotateOnMouse/rotateOnMouseComponent.tscn" id="11_7thud"]
 [ext_resource type="PackedScene" uid="uid://bc8pnynosrjcd" path="res://entities/player/inventory/inventory.tscn" id="12_a1qjk"]
@@ -34,12 +33,7 @@ inventory = NodePath("../../Inventory")
 [node name="Sprite2D" type="Sprite2D" parent="Pivot"]
 texture = ExtResource("1_symyc")
 
-[node name="Pistol" parent="Pivot" instance=ExtResource("9_bectd")]
-unique_name_in_owner = true
-position = Vector2(24, 0)
-
 [node name="HurtboxComponent" parent="Pivot" node_paths=PackedStringArray("health_component") instance=ExtResource("7_26q78")]
-visible = false
 collision_layer = 2
 collision_mask = 8
 health_component = NodePath("../../HealthComponent")
@@ -81,4 +75,5 @@ unique_name_in_owner = true
 
 [connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
 [connection signal="item_added" from="Inventory" to="CanvasLayer/InventoryBar" method="_on_inventory_item_added"]
+[connection signal="selected_item_changed" from="Inventory" to="." method="_on_inventory_selected_item_changed"]
 [connection signal="selected_item_changed" from="Inventory" to="CanvasLayer/InventoryBar" method="_on_inventory_selected_item_changed"]

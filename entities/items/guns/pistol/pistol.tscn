@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dwgjtbsmpgd5t" path="res://entities/items/guns/pistol/assets/Pistol.png" id="1_wfjhr"]
 
 [node name="Pistol" type="Node2D"]
+position = Vector2(25, 0)
 script = ExtResource("1_l1nd7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
