@@ -23,6 +23,12 @@ radius = 24.3311
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_fkugw")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="InventoryBar" parent="CanvasLayer" node_paths=PackedStringArray("inventory") instance=ExtResource("13_j3ovn")]
+unique_name_in_owner = true
+inventory = NodePath("../../Inventory")
+
 [node name="Pivot" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Pivot"]
@@ -72,12 +78,6 @@ debug_color = Color(0.501961, 0.501961, 0.501961, 0.454902)
 
 [node name="Inventory" parent="." instance=ExtResource("12_a1qjk")]
 unique_name_in_owner = true
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="InventoryBar" parent="CanvasLayer" node_paths=PackedStringArray("inventory") instance=ExtResource("13_j3ovn")]
-unique_name_in_owner = true
-inventory = NodePath("../../Inventory")
 
 [connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
 [connection signal="item_added" from="Inventory" to="CanvasLayer/InventoryBar" method="_on_inventory_item_added"]

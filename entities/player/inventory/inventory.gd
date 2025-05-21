@@ -8,7 +8,7 @@ signal item_added(item:InventoryItem)
 signal selected_item_changed(item: InventoryItem, index: int)
 
 var items: Array[InventoryItem] = []
-var selected_item_index: int = 0:
+var selected_item_index: int = -1:
 	set(inventory_slot):
 		if inventory_slot >=MIN_SLOT and inventory_slot <= MAX_SLOT:
 			selected_item_index = inventory_slot
@@ -27,6 +27,7 @@ func _ready() -> void:
 	items.resize(10)
 	var pistol_item: GunItem = preload("res://entities/items/guns/pistol/pistol_item.tres")
 	add_item(pistol_item)
+	selected_item_index = 0
 
 func add_item(item: InventoryItem)->void:
 	if item.type == InventoryItem.ItemType.BLOCK:
