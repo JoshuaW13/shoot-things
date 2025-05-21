@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ToolItem" load_steps=4 format=3 uid="uid://dxbpiee2rio3o"]
+
+[ext_resource type="Script" uid="uid://4ura0kje0t3t" path="res://entities/player/inventory/ToolItem.gd" id="1_1r7nq"]
+[ext_resource type="Texture2D" uid="uid://cuwvgmqe6yey7" path="res://entities/items/tools/axes/hatchet/assets/Axe.png" id="1_eqyan"]
+[ext_resource type="PackedScene" uid="uid://c7luh3mbbqpwd" path="res://entities/items/tools/axes/hatchet/hatchet.tscn" id="2_e7ura"]
+
+[resource]
+script = ExtResource("1_1r7nq")
+name = "Hatchet"
+type = 1
+scene_data = ExtResource("2_e7ura")
+icon = ExtResource("1_eqyan")
+metadata/_custom_type_script = "uid://4ura0kje0t3t"

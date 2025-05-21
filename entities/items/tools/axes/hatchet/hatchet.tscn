@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7luh3mbbqpwd"]
+
+[ext_resource type="Script" uid="uid://cscjqn061u7a6" path="res://entities/items/tools/axes/hatchet/hatchet.gd" id="1_fs21r"]
+[ext_resource type="Texture2D" uid="uid://cuwvgmqe6yey7" path="res://entities/items/tools/axes/hatchet/assets/Axe.png" id="1_tey7s"]
+
+[node name="Hatchet" type="Node2D"]
+position = Vector2(15, 8)
+script = ExtResource("1_fs21r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(20, -17)
+texture = ExtResource("1_tey7s")

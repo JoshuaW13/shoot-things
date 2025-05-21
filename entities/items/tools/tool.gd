@@ -1,8 +1,8 @@
 extends Item
-class_name Gun
+class_name Tool
 
 func primary_action()->void:
-	shoot()
+	use()
 
-func shoot()->void:
+func use()->void:
 	pass

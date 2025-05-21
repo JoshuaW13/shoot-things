@@ -26,7 +26,9 @@ func _ready() -> void:
 	await owner.ready
 	items.resize(10)
 	var pistol_item: GunItem = preload("res://entities/items/guns/pistol/pistol_item.tres")
+	var hatchet_item: ToolItem = preload("res://entities/items/tools/axes/hatchet/hatchet.tres")
 	add_item(pistol_item)
+	add_item(hatchet_item)
 	selected_item_index = 0
 
 func add_item(item: InventoryItem)->void:
