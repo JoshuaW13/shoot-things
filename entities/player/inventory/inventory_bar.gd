@@ -37,8 +37,8 @@ func _process(_delta: float) -> void:
 		if Input.is_action_just_pressed("slot_%d" % i):
 			inventory.selected_item_index = i
 
-func _on_inventory_selected_item_changed(_item: InventoryItem, index: int) -> void:
-	var inventory_slot: InventoryItemContainer = inventory_item_containers[index]
+func _on_inventory_selected_item_changed() -> void:
+	var inventory_slot: InventoryItemContainer = inventory_item_containers[inventory.selected_item_index]
 	inventory_slot.get_focus()
 
 func on_inventory_container_got_focus(index: int)->void:

@@ -5,22 +5,38 @@ const MIN_SLOT = 0
 const MAX_SLOT = 9
 
 signal item_added(item:InventoryItem)
-signal selected_item_changed(item: InventoryItem, index: int)
+signal selected_item_changed()
 
 var items: Array[InventoryItem] = []
+
 var selected_item_index: int = -1:
 	set(inventory_slot):
+		if selected_item_instance and selected_item_instance.interruptable == false:
+			selected_item_instance.interruptable_changed.connect(func()->void:
+				selected_item_index = inventory_slot
+				)
+			return
 		if inventory_slot != selected_item_index:
-			if inventory_slot >=MIN_SLOT and inventory_slot <= MAX_SLOT:
+			if inventory_slot >= MIN_SLOT and inventory_slot <= MAX_SLOT:
 				selected_item_index = inventory_slot
 				selected_item = items[inventory_slot]
 			else:
-				print("bad inventory swap!");
+				print("bad inventory swap!")
 
 var selected_item: InventoryItem = null:
 	set(item):
-		selected_item_changed.emit(item, selected_item_index)
 		selected_item = item
+		if selected_item:
+			selected_item_instance = selected_item.scene_data.instantiate()
+		else:
+			selected_item_instance = null
+		selected_item_changed.emit()
+
+var selected_item_instance: Item = null:
+	set(value):
+		if selected_item_instance:
+			selected_item_instance.queue_free()
+		selected_item_instance = value
 
 func _ready() -> void:
 	await owner.ready

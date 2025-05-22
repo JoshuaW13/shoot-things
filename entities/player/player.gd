@@ -38,13 +38,12 @@ func on_level_limits(left_limit:int, right_limit:int, top_limit:int, bottom_limi
 	camera.set_limit(SIDE_TOP,top_limit)
 	camera.set_limit(SIDE_BOTTOM,bottom_limit)
 
-func _on_inventory_selected_item_changed(item: InventoryItem, _index: int) -> void:
+func _on_inventory_selected_item_changed() -> void:
 	if selected_item:
-		selected_item.queue_free()
 		selected_item = null
 		item_direction_controller.patient = null
-	if item:
-		selected_item = item.scene_data.instantiate()
+	if inventory.selected_item_instance:
+		selected_item = inventory.selected_item_instance
 		if selected_item is Gun:
 			item_direction_controller.patient = selected_item
 		flip_pivot.add_child(selected_item)
