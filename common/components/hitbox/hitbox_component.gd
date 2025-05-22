@@ -8,3 +8,11 @@ signal hurtbox_hit
 func _on_area_entered(area: Area2D) -> void:
 	if area is HurtboxComponent:
 		hurtbox_hit.emit()
+
+func enable()->void:
+	monitorable = true
+	monitoring = true
+
+func disable()->void:
+	monitorable = false
+	monitoring = false

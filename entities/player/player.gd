@@ -42,7 +42,9 @@ func _on_inventory_selected_item_changed(item: InventoryItem, _index: int) -> vo
 	if selected_item:
 		selected_item.queue_free()
 		selected_item = null
+		item_direction_controller.patient = null
 	if item:
 		selected_item = item.scene_data.instantiate()
+		if selected_item is Gun:
+			item_direction_controller.patient = selected_item
 		flip_pivot.add_child(selected_item)
-		item_direction_controller.patient = selected_item
