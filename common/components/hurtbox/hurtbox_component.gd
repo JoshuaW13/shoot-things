@@ -19,3 +19,11 @@ func apply_damage(damage: float)->void:
 func _on_area_entered(other_area: Area2D) -> void:
 	if other_area is HitboxComponent:
 		apply_damage(other_area.damage)
+
+func disable()->void:
+	set_deferred("monitorable", false)
+	set_deferred("monitoring", false)
+
+func enable()->void:
+	set_deferred("monitorable", true)
+	set_deferred("monitoring", true)

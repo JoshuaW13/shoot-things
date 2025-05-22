@@ -66,8 +66,9 @@ initial_state = NodePath("Hunt")
 script = ExtResource("9_dx8eb")
 zombie = NodePath("../..")
 
-[node name="Stunned" type="Node" parent="StateMachine"]
+[node name="Stunned" type="Node" parent="StateMachine" node_paths=PackedStringArray("zombie")]
 script = ExtResource("10_dx8eb")
+zombie = NodePath("../..")
 
 [node name="StunnedTimer" type="Timer" parent="StateMachine/Stunned"]
 

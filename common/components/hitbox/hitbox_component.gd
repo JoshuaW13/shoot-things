@@ -10,9 +10,9 @@ func _on_area_entered(area: Area2D) -> void:
 		hurtbox_hit.emit()
 
 func enable()->void:
-	monitorable = true
-	monitoring = true
+	set_deferred("monitorable", true)
+	set_deferred("monitoring", true)
 
 func disable()->void:
-	monitorable = false
-	monitoring = false
+	set_deferred("monitorable", false)
+	set_deferred("monitoring", false)
