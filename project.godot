@@ -114,6 +114,8 @@ slot_9={
 2d_physics/layer_4="EnemyHitbox"
 2d_physics/layer_5="Entity"
 2d_physics/layer_6="PlayerAttack"
+2d_physics/layer_7="playerObject"
+2d_physics/layer_8="enemy_object"
 
 [rendering]
 

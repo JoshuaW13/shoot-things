@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://fmxv1aacj5nc"]
+[gd_scene load_steps=14 format=3 uid="uid://fmxv1aacj5nc"]
 
 [ext_resource type="Texture2D" uid="uid://ltw1iovpfud" path="res://entities/mobs/zombie/assets/Zombie.png" id="1_ao7cg"]
 [ext_resource type="Script" uid="uid://da3y2qcqg177y" path="res://entities/mobs/zombie/zombie.gd" id="1_gvcbw"]
@@ -19,13 +19,18 @@ height = 48.0
 radius = 16.0
 height = 40.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dx8eb"]
+radius = 2.0
+height = 40.0
+
 [node name="Zombie" type="CharacterBody2D"]
-collision_layer = 16
-collision_mask = 17
+y_sort_enabled = true
+collision_layer = 128
 script = ExtResource("1_gvcbw")
 
 [node name="Pivot" type="Node2D" parent="."]
 unique_name_in_owner = true
+position = Vector2(0, -21)
 
 [node name="Sprite2D" type="Sprite2D" parent="Pivot"]
 unique_name_in_owner = true
@@ -71,6 +76,12 @@ script = ExtResource("10_dx8eb")
 zombie = NodePath("../..")
 
 [node name="StunnedTimer" type="Timer" parent="StateMachine/Stunned"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_dx8eb")
+debug_color = Color(3.48948e-07, 0.169809, 0.204131, 0.42)
 
 [connection signal="current_health_changed" from="HealthComponent" to="StateMachine/Hunt" method="_on_health_component_current_health_changed"]
 [connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]

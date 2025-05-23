@@ -16,10 +16,13 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_26q78"]
 radius = 22.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_7thud"]
-radius = 24.3311
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a1qjk"]
+radius = 5.0
+height = 40.0
 
 [node name="Player" type="CharacterBody2D"]
+y_sort_enabled = true
+collision_layer = 64
 script = ExtResource("1_fkugw")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -29,6 +32,7 @@ unique_name_in_owner = true
 inventory = NodePath("../../Inventory")
 
 [node name="Pivot" type="Node2D" parent="."]
+position = Vector2(0, -21)
 
 [node name="Sprite2D" type="Sprite2D" parent="Pivot"]
 texture = ExtResource("1_symyc")
@@ -66,8 +70,8 @@ unique_name_in_owner = true
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="objectCollisions" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
-shape = SubResource("CircleShape2D_7thud")
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_a1qjk")
 debug_color = Color(0.501961, 0.501961, 0.501961, 0.454902)
 
 [node name="Inventory" parent="." instance=ExtResource("12_a1qjk")]
