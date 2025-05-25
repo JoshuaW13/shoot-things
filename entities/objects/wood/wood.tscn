@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8tcxxo317o2i"]
+
+[ext_resource type="Script" uid="uid://dxcn7f5td1g4p" path="res://entities/objects/wood/wood.gd" id="1_1pqn7"]
+[ext_resource type="Texture2D" uid="uid://bqjp3ip54okb5" path="res://entities/objects/wood/assets/Wood.png" id="1_gpe47"]
+
+[node name="Wood" type="Node2D"]
+script = ExtResource("1_1pqn7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_gpe47")

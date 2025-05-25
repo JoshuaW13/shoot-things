@@ -1,13 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7qgmdmdbeoog"]
+[gd_scene load_steps=7 format=3 uid="uid://b7qgmdmdbeoog"]
 
 [ext_resource type="Texture2D" uid="uid://ugkufk501215" path="res://entities/objects/tree/assets/tree1.png" id="1_1r8qb"]
+[ext_resource type="Script" uid="uid://vhgfcri0yq5j" path="res://entities/objects/tree/tree.gd" id="1_laq7g"]
+[ext_resource type="PackedScene" uid="uid://1kj2iq4p63nj" path="res://common/components/hurtbox/hurtboxComponent.tscn" id="2_amsp1"]
+[ext_resource type="PackedScene" uid="uid://bf8r0vvk3mqm3" path="res://common/components/health/healthComponent.tscn" id="3_x0y32"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1r8qb"]
 radius = 3.0
 height = 52.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x0y32"]
+radius = 31.0
+height = 62.0
+
 [node name="Tree" type="StaticBody2D"]
 y_sort_enabled = true
+script = ExtResource("1_laq7g")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1, -29)
@@ -16,3 +24,18 @@ texture = ExtResource("1_1r8qb")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_1r8qb")
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_amsp1")]
+collision_layer = 16
+collision_mask = 256
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+position = Vector2(0, -28)
+shape = SubResource("CapsuleShape2D_x0y32")
+debug_color = Color(0.832835, 0.379046, 0.259328, 0.42)
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_x0y32")]
+max_health = 3.0
+
+[connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
