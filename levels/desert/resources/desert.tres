@@ -1,6 +1,7 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://df755e06fxm2d"]
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://df755e06fxm2d"]
 
 [ext_resource type="Texture2D" uid="uid://c1ht6txkcqudi" path="res://levels/desert/assets/desertTiles.png" id="1_gih4x"]
+[ext_resource type="PackedScene" uid="uid://b7qgmdmdbeoog" path="res://entities/objects/tree/tree.tscn" id="2_gxd1o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_838hv"]
 texture = ExtResource("1_gih4x")
@@ -12,7 +13,11 @@ texture_region_size = Vector2i(32, 32)
 2:0/0 = 0
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_b476k"]
+scenes/1/scene = ExtResource("2_gxd1o")
+
 [resource]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_838hv")
+sources/2 = SubResource("TileSetScenesCollectionSource_b476k")
