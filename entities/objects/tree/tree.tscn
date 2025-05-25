@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b7qgmdmdbeoog"]
+[gd_scene load_steps=8 format=3 uid="uid://b7qgmdmdbeoog"]
 
 [ext_resource type="Texture2D" uid="uid://ugkufk501215" path="res://entities/objects/tree/assets/tree1.png" id="1_1r8qb"]
 [ext_resource type="Script" uid="uid://vhgfcri0yq5j" path="res://entities/objects/tree/tree.gd" id="1_laq7g"]
 [ext_resource type="PackedScene" uid="uid://1kj2iq4p63nj" path="res://common/components/hurtbox/hurtboxComponent.tscn" id="2_amsp1"]
 [ext_resource type="PackedScene" uid="uid://bf8r0vvk3mqm3" path="res://common/components/health/healthComponent.tscn" id="3_x0y32"]
+[ext_resource type="PackedScene" uid="uid://ct3isk0ipjr45" path="res://common/components/pointSpawner/pointSpawner.tscn" id="5_8yovr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1r8qb"]
 radius = 3.0
@@ -37,5 +38,8 @@ debug_color = Color(0.832835, 0.379046, 0.259328, 0.42)
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_x0y32")]
 max_health = 3.0
+
+[node name="PointSpawner" parent="." instance=ExtResource("5_8yovr")]
+unique_name_in_owner = true
 
 [connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
