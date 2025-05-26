@@ -48,21 +48,18 @@ func _ready() -> void:
 	add_item(hatchet_item)
 	selected_item_index = 0
 
-func add_item(item: InventoryItem)->void:
+func add_item(item: InventoryItem) -> void:
 	if item.type == InventoryItem.ItemType.BLOCK:
-		print("Got a block item!")
 		for existing_item in items:
-			if existing_item:
-				if existing_item.name == item.name and existing_item is BlockItem:
-					print("Foudn existing item of type!")
-					existing_item.count += item.count
-					return
-		add_new_item(item)
-		item_added.emit(item)
-	elif not has_item(item.name):
-		print("Did not find existing item of type")
-		add_new_item(item)
-		item_added.emit(item)
+			if existing_item and existing_item.name == item.name and existing_item is BlockItem:
+				existing_item.count += item.count
+				return
+	else:
+		if has_item(item.name):
+			return 
+
+	add_new_item(item)
+	item_added.emit(item)
 
 func add_new_item(item: InventoryItem)->void:
 	print("adding new item")

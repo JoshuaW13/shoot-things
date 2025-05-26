@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://cquh6c4ibpumx" path="res://entities/player/inventory/BlockItem.gd" id="1_8nnno"]
 [ext_resource type="Texture2D" uid="uid://bqjp3ip54okb5" path="res://entities/objects/wood/assets/Wood.png" id="1_calaw"]
-[ext_resource type="PackedScene" uid="uid://b8tcxxo317o2i" path="res://entities/objects/wood/wood.tscn" id="2_o5kb2"]
+[ext_resource type="PackedScene" uid="uid://tdp62tjxxkrk" path="res://entities/objects/wood/woodBlock.tscn" id="2_calaw"]
 
 [resource]
 script = ExtResource("1_8nnno")
 name = "Wood"
 type = 2
-scene_data = ExtResource("2_o5kb2")
+scene_data = ExtResource("2_calaw")
 icon = ExtResource("1_calaw")
 metadata/_custom_type_script = "uid://cquh6c4ibpumx"
