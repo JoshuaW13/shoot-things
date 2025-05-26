@@ -117,6 +117,7 @@ slot_9={
 2d_physics/layer_7="playerObject"
 2d_physics/layer_8="enemy_object"
 2d_physics/layer_9="woodDestroyer"
+2d_physics/layer_10="pickables"
 
 [rendering]
 

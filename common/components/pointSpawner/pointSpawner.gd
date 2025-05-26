@@ -12,4 +12,4 @@ func spawn(scene: PackedScene) -> void:
 	var offset: Vector2 = Vector2(cos(angle), sin(angle)) * distance_from_origin
 	
 	scene_instance.position = origin + offset
-	get_tree().current_scene.add_child(scene_instance)
+	get_tree().current_scene.call_deferred("add_child", scene_instance)

@@ -39,6 +39,7 @@ var selected_item_instance: Item = null:
 		selected_item_instance = value
 
 func _ready() -> void:
+	SignalBus.item_picked.connect(add_item)
 	await owner.ready
 	items.resize(10)
 	var pistol_item: GunItem = preload("res://entities/items/guns/pistol/pistol_item.tres")
@@ -49,17 +50,25 @@ func _ready() -> void:
 
 func add_item(item: InventoryItem)->void:
 	if item.type == InventoryItem.ItemType.BLOCK:
+		print("Got a block item!")
 		for existing_item in items:
-			if existing_item.name == item.name and existing_item is BlockItem:
-				existing_item.count += item.count
-				return
+			if existing_item:
+				if existing_item.name == item.name and existing_item is BlockItem:
+					print("Foudn existing item of type!")
+					existing_item.count += item.count
+					return
+		add_new_item(item)
+		item_added.emit(item)
 	elif not has_item(item.name):
+		print("Did not find existing item of type")
 		add_new_item(item)
 		item_added.emit(item)
 
 func add_new_item(item: InventoryItem)->void:
+	print("adding new item")
 	for i in items.size():
 		if items[i] ==null:
+			print("adding item in slot "+str(i))
 			items[i] = item
 			break
 
