@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BlockItem" load_steps=4 format=3 uid="uid://c601wohbw4wi3"]
+
+[ext_resource type="Texture2D" uid="uid://cqmwreep68l1m" path="res://entities/objects/woodBlock/assets/WoodBlockIcon.png" id="1_bfakh"]
+[ext_resource type="PackedScene" uid="uid://tdp62tjxxkrk" path="res://entities/objects/woodBlock/woodBlock.tscn" id="2_2uycu"]
+[ext_resource type="Script" uid="uid://cquh6c4ibpumx" path="res://entities/player/inventory/BlockItem.gd" id="3_jay35"]
+
+[resource]
+script = ExtResource("3_jay35")
+name = "WoodBlock"
+type = 2
+scene_data = ExtResource("2_2uycu")
+icon = ExtResource("1_bfakh")
+metadata/_custom_type_script = "uid://cquh6c4ibpumx"

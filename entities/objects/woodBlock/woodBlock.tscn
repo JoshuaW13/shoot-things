@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://tdp62tjxxkrk"]
+
+[ext_resource type="Script" uid="uid://qat10r2u0mqj" path="res://entities/objects/woodBlock/wood_block.gd" id="1_1l2bj"]
+[ext_resource type="Texture2D" uid="uid://cqmwreep68l1m" path="res://entities/objects/woodBlock/assets/WoodBlockIcon.png" id="2_42e8o"]
+
+[node name="WoodBlock" type="Node2D"]
+script = ExtResource("1_1l2bj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(33, -4)
+texture = ExtResource("2_42e8o")
