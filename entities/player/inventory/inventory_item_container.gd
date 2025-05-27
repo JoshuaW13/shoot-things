@@ -15,6 +15,7 @@ func set_item(item: InventoryItem)->void:
 	is_set = true
 	if item is BlockItem:
 		label.text = str(item.count)
+		item.count_changed.connect( func(new_count: int)->void: label.text = str(new_count) )
 
 func get_focus()->void:
 	texture_button.grab_focus()

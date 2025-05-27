@@ -52,7 +52,10 @@ func add_item(item: InventoryItem) -> void:
 	if item.type == InventoryItem.ItemType.BLOCK:
 		for existing_item in items:
 			if existing_item and existing_item.name == item.name and existing_item is BlockItem:
-				existing_item.count += item.count
+				print("The existing cound is "+str(existing_item.count))
+				print('The count we are adding is '+str(item.count))
+				existing_item.count += 1
+				print("count is now "+str(existing_item.count))
 				return
 	else:
 		if has_item(item.name):
