@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://c81oohdhbaf0y"]
+[gd_scene load_steps=6 format=4 uid="uid://c81oohdhbaf0y"]
 
 [ext_resource type="PackedScene" uid="uid://fmxv1aacj5nc" path="res://entities/mobs/zombie/zombie.tscn" id="1_8q31r"]
 [ext_resource type="Script" uid="uid://drwnptepvowf1" path="res://levels/desert/desert.gd" id="1_838hv"]
 [ext_resource type="TileSet" uid="uid://df755e06fxm2d" path="res://levels/desert/resources/desert.tres" id="1_jfnqx"]
 [ext_resource type="PackedScene" uid="uid://bhmx2bkb3mcap" path="res://entities/player/player.tscn" id="2_jfnqx"]
+[ext_resource type="PackedScene" uid="uid://dpehm3k8njfpv" path="res://entities/mobs/skeleton/skeleton.tscn" id="5_ig631"]
 
 [node name="desert" type="Node2D"]
 script = ExtResource("1_838hv")
@@ -16,6 +17,8 @@ tile_set = ExtResource("1_jfnqx")
 
 [node name="YSort" type="Node2D" parent="."]
 y_sort_enabled = true
+
+[node name="Skeleton" parent="YSort" instance=ExtResource("5_ig631")]
 
 [node name="Zombie" parent="YSort" node_paths=PackedStringArray("player") instance=ExtResource("1_8q31r")]
 position = Vector2(204, 122)

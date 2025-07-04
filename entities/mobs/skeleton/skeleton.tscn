@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://dpehm3k8njfpv"]
+
+[ext_resource type="Script" uid="uid://w06ivxr21qpp" path="res://entities/mobs/skeleton/skeleton.gd" id="1_j676y"]
+[ext_resource type="Texture2D" uid="uid://b322ug1kkinwp" path="res://entities/mobs/skeleton/assets/skeleton.png" id="2_oppb0"]
+[ext_resource type="PackedScene" uid="uid://1kj2iq4p63nj" path="res://common/components/hurtbox/hurtboxComponent.tscn" id="3_bameh"]
+[ext_resource type="PackedScene" uid="uid://bf8r0vvk3mqm3" path="res://common/components/health/healthComponent.tscn" id="4_17rph"]
+[ext_resource type="PackedScene" uid="uid://bflsqaeb3vl84" path="res://common/components/hitbox/HitboxComponent.tscn" id="4_22u2u"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_17rph"]
+radius = 14.0
+height = 50.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bqofm"]
+radius = 14.0
+height = 50.0
+
+[node name="Skeleton" type="CharacterBody2D"]
+y_sort_enabled = true
+script = ExtResource("1_j676y")
+
+[node name="pivot" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="pivot"]
+y_sort_enabled = true
+position = Vector2(-2, -28)
+texture = ExtResource("2_oppb0")
+
+[node name="HurtboxComponent" parent="pivot" node_paths=PackedStringArray("health_component") instance=ExtResource("3_bameh")]
+collision_layer = 4
+collision_mask = 32
+health_component = NodePath("../../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pivot/HurtboxComponent"]
+position = Vector2(0, -28)
+shape = SubResource("CapsuleShape2D_17rph")
+
+[node name="HitboxComponent" parent="pivot" instance=ExtResource("4_22u2u")]
+collision_layer = 8
+collision_mask = 0
+damage = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pivot/HitboxComponent"]
+position = Vector2(0, -28)
+shape = SubResource("CapsuleShape2D_bqofm")
+debug_color = Color(0.886621, 0.294612, 0.39376, 0.42)
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_17rph")]
+max_health = 2.0
+
+[connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
