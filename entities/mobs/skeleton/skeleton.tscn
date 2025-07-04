@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://dpehm3k8njfpv"]
+[gd_scene load_steps=12 format=3 uid="uid://dpehm3k8njfpv"]
 
 [ext_resource type="Script" uid="uid://w06ivxr21qpp" path="res://entities/mobs/skeleton/skeleton.gd" id="1_j676y"]
 [ext_resource type="Texture2D" uid="uid://b322ug1kkinwp" path="res://entities/mobs/skeleton/assets/skeleton.png" id="2_oppb0"]
 [ext_resource type="PackedScene" uid="uid://1kj2iq4p63nj" path="res://common/components/hurtbox/hurtboxComponent.tscn" id="3_bameh"]
 [ext_resource type="PackedScene" uid="uid://bf8r0vvk3mqm3" path="res://common/components/health/healthComponent.tscn" id="4_17rph"]
 [ext_resource type="PackedScene" uid="uid://bflsqaeb3vl84" path="res://common/components/hitbox/HitboxComponent.tscn" id="4_22u2u"]
+[ext_resource type="PackedScene" uid="uid://1pp8jw5odpso" path="res://common/components/velocity/velocityComponent.tscn" id="6_bqofm"]
+[ext_resource type="PackedScene" uid="uid://4j5ax7d2m7u3" path="res://common/stateMachine/stateMachine.tscn" id="7_13g25"]
+[ext_resource type="Script" uid="uid://cs8c228jqlbrc" path="res://entities/mobs/skeleton/huntState.gd" id="8_qd1ij"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_17rph"]
 radius = 14.0
@@ -14,8 +17,13 @@ height = 50.0
 radius = 14.0
 height = 50.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qd1ij"]
+radius = 2.0
+height = 22.0
+
 [node name="Skeleton" type="CharacterBody2D"]
 y_sort_enabled = true
+collision_layer = 128
 script = ExtResource("1_j676y")
 
 [node name="pivot" type="Node2D" parent="."]
@@ -46,6 +54,25 @@ shape = SubResource("CapsuleShape2D_bqofm")
 debug_color = Color(0.886621, 0.294612, 0.39376, 0.42)
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_17rph")]
+unique_name_in_owner = true
 max_health = 2.0
 
+[node name="VelocityComponent" parent="." instance=ExtResource("6_bqofm")]
+unique_name_in_owner = true
+speed = 60.0
+
+[node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("7_13g25")]
+initial_state = NodePath("Hunt")
+
+[node name="Hunt" type="Node" parent="StateMachine" node_paths=PackedStringArray("skeleton")]
+script = ExtResource("8_qd1ij")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_qd1ij")
+debug_color = Color(1.02278e-07, 0.133454, 0.162226, 0.42)
+
+[connection signal="current_health_changed" from="HealthComponent" to="." method="_on_health_component_current_health_changed"]
 [connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]

@@ -18,7 +18,8 @@ tile_set = ExtResource("1_jfnqx")
 [node name="YSort" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="Skeleton" parent="YSort" instance=ExtResource("5_ig631")]
+[node name="Skeleton" parent="YSort" node_paths=PackedStringArray("player") instance=ExtResource("5_ig631")]
+player = NodePath("../Player")
 
 [node name="Zombie" parent="YSort" node_paths=PackedStringArray("player") instance=ExtResource("1_8q31r")]
 position = Vector2(204, 122)
